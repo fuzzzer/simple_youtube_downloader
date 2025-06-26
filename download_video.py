@@ -17,7 +17,7 @@ def build_format_selector(max_res):
         max_height = 1080  # default fallback
     return f"bestvideo[height<={max_height}]+bestaudio/best"
 
-def download_from_url(url, max_quality='1080p'):
+def download_video(url, max_quality='1080p'):
     # Probe info to check if it's a playlist or a video
     ydl_probe_opts = {'quiet': True, 'extract_flat': True}
     with yt_dlp.YoutubeDL(ydl_probe_opts) as ydl:
@@ -55,4 +55,4 @@ if __name__ == "__main__":
     url = input("🎥 Enter YouTube video or playlist URL: ").strip()
     max_q = input("🎯 Max quality (e.g. 1080p, 720p): ").strip().lower() or '1080p'
     os.makedirs(BASE_DIR, exist_ok=True)
-    download_from_url(url, max_q)
+    download_video(url, max_q)
